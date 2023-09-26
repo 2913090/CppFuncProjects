@@ -1,7 +1,7 @@
-﻿#include <iostream>
+#include <iostream>
+using namespace std;
 int main()
 {
-    using namespace std;
     setlocale(LC_ALL, "");
     float q, w;
     char e;
@@ -12,18 +12,23 @@ int main()
     cout << "Введите действие(+,-,*,/)\n";
     cin >> e;
     cout << q << e << w << "=";
-    if (e == '/') {
+    switch (e) {
+    case '*':
+        cout << q * w;
+        break;
+    case '+':
+        cout << q + w;
+        break;
+    case '-':
+        cout << q - w;
+        break;
+    case '/':
         if (w == 0)
             cout << "Ошибка (на 0 делить нельзя)";
         else
             cout << q / w;
-    }
-    else if (e == '*') 
-        cout << q * w;
-    else if (e == '+')
-        cout << q + w;
-    else if (e == '-')
-        cout << q - w;
-    else 
+    default:
         cout << "Введенные данные не корректны";
+        break;
+    }
 }
