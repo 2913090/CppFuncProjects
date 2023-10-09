@@ -17,7 +17,7 @@ int main()
         for (int p = 1; p <= 6; p++) {
             cout << "\tВведите первое значение (A/B/1/2/3/4): ";
             cin >> Q;
-            cout << "\tВведите логическую операцию (отрицание-1, конъюнкция-2, дизъюнкция-3, импликация-4, эквиваленция-5): ";
+            cout << "\tВведите логическую операцию (отрицание-1, конъюнкция-2, дизъюнкция-3, \n\tимпликация-4, эквиваленция-5, исключающая дизъюнкция-6, стрелка Пирса-7): ";
             cin >> Op;
             if (Op == '1') {
                 if (Q == 'A') {
@@ -262,7 +262,7 @@ int main()
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 1) ? deystv4[i] = 1 : deystv4[i] = 0;
                     }
-                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && deystv3[i] == 1) ? deystv4[i] = 1 : deystv4[i] = 0;
                     }
@@ -328,9 +328,25 @@ int main()
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
-                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && deystv3[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == W) {
                         switch (Q) {
@@ -1042,70 +1058,499 @@ int main()
                     break;
                 case 5:
                     if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo1[i] == chislo2[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo1[i] == deystv1[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo2[i] == deystv1[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo1[i] == deystv2[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo2[i] == deystv2[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (deystv2[i] == deystv2[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo1[i] == deystv3[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo2[i] == deystv3[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (deystv1[i] == deystv3[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (deystv2[i] == deystv3[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo1[i] == deystv4[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (chislo2[i] == deystv4[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (deystv1[i] == deystv4[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (deystv2[i] == deystv4[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             (deystv3[i] == deystv4[i]) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == W) {
-                        for (int i = 0; i < 4; i++)
+                        for (int i = 0; i < y; i++)
                             deystv5[i] = 1;
                         break;
                     }
+                }
+            }
+            else if (Op == '6') {
+            switch (p) {
+            case 1:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < 4; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < 4; i++)
+                        deystv1[i] = 1;
+                }
+                break;
+            case 2:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv2[i] = 0;
+                }
+                break;
+            case 3:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv3[i] = 0;
+                }
+                break;
+            case 4:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv4[i] = 0;
+                }
+                break;
+            case 5:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
+                    for (int i = 0; i < y; i++)
+                        (deystv3[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv5[i] = 0;
+                    break;
+                }
+            }
+            }
+            else if (Op == '7') {
+                switch (p) {
+                case 1:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '3':
+                            for (int i = 0; i < y; i++)
+                                (deystv3[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 5:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
+                        for (int i = 0; i < y; i++)
+                            (deystv3[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '3':
+                            for (int i = 0; i < y; i++)
+                                (deystv3[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '4':
+                            for (int i = 0; i < y; i++)
+                                (deystv4[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
                 }
             }
             if (p == 1) {
@@ -1150,7 +1595,7 @@ int main()
         for (int p = 1; p <= 6; p++) {
             cout << "\tВведите первое значение (A/B/C/1/2/3/4): ";
             cin >> Q;
-            cout << "\tВведите логическую операцию (отрицание-1, конъюнкция-2, дизъюнкция-3, импликация-4, эквиваленция-5): ";
+            cout << "\tВведите логическую операцию (отрицание-1, конъюнкция-2, дизъюнкция-3, \n\tимпликация-4, эквиваленция-5, исключающая дизъюнкция-6, стрелка Пирса-7): ";
             cin >> Op;
             if (Op == '1') {
                 if (Q == 'A') {
@@ -1490,7 +1935,7 @@ int main()
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 1) ? deystv4[i] = 1 : deystv4[i] = 0;
                     }
-                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && deystv3[i] == 1) ? deystv4[i] = 1 : deystv4[i] = 0;
                     }
@@ -1580,9 +2025,33 @@ int main()
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
-                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && deystv3[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '4' || Q == '4' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
+                        for (int i = 0; i < y; i++)
+                            (deystv3[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == W) {
                         switch (Q) {
@@ -2704,6 +3173,620 @@ int main()
                     }
                 }
             }
+            else if (Op == '6') {
+            switch (p) {
+            case 1:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                }
+                else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo3[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                }
+                else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == chislo3[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv1[i] = 0;
+                }
+                break;
+            case 2:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo3[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == chislo3[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv2[i] = 0;
+                }
+                break;
+            case 3:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo3[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == chislo3[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv3[i] = 0;
+                }
+                break;
+            case 4:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == chislo3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv4[i] = 0;
+                }
+                break;
+            case 5:
+                if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == chislo3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == chislo3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                    for (int i = 0; i < y; i++)
+                        (chislo1[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                    for (int i = 0; i < y; i++)
+                        (chislo2[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == 'C' && W == '4' || Q == '4' && W == 'C') {
+                    for (int i = 0; i < y; i++)
+                        (chislo3[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                    for (int i = 0; i < y; i++)
+                        (deystv1[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv2[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
+                    for (int i = 0; i < y; i++)
+                        (deystv3[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                }
+                else if (Q == W) {
+                    for (int i = 0; i < y; i++)
+                        deystv5[i] = 0;
+                    break;
+                }
+            }
+            }
+            else if (Op == '7') {
+                switch (p) {
+                case 1:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                        break;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '3':
+                            for (int i = 0; i < y; i++)
+                                (deystv3[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 5:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '4' || Q == '4' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
+                        for (int i = 0; i < y; i++)
+                            (deystv3[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '3':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '4':
+                            for (int i = 0; i < y; i++)
+                                (deystv4[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             if (p == 1) {
                 cout << "\tA | B | C | 1\n";
                 cout << "\t_____________\n";
@@ -2746,7 +3829,7 @@ int main()
         for (int p = 1; p <= 6; p++) {
             cout << "\tВведите первое значение (A/B/C/D/1/2/3/4): ";
             cin >> Q;
-            cout << "\tВведите логическую операцию (отрицание-1, конъюнкция-2, дизъюнкция-3, импликация-4, эквиваленция-5): ";
+            cout << "\tВведите логическую операцию (отрицание-1, конъюнкция-2, дизъюнкция-3, \n\tимпликация-4, эквиваленция-5, исключающая дизъюнкция-6, стрелка Пирса-7): ";
             cin >> Op;
             if (Op == '1') {
                 if (Q == 'A') {
@@ -2922,11 +4005,11 @@ int main()
                         for (int i = 0; i < y; i++)
                             (chislo1[i] == 1 && chislo4[i] == 1) ? deystv1[i] = 1 : deystv1[i] = 0;
                     }
-                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'A') {
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
                         for (int i = 0; i < y; i++)
                             (chislo2[i] == 1 && chislo4[i] == 1) ? deystv1[i] = 1 : deystv1[i] = 0;
                     }
-                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'A') {
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
                         for (int i = 0; i < y; i++)
                             (chislo3[i] == 1 && chislo4[i] == 1) ? deystv1[i] = 1 : deystv1[i] = 0;
                     }
@@ -3198,7 +4281,7 @@ int main()
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 1) ? deystv4[i] = 1 : deystv4[i] = 0;
                     }
-                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && deystv3[i] == 1) ? deystv4[i] = 1 : deystv4[i] = 0;
                     }
@@ -3316,9 +4399,37 @@ int main()
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
-                    else if (Q == '2' && W == '3' || Q == '3' && W == '1') {
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && deystv3[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '4' || Q == '4' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '4' || Q == '4' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '3' && W == '4' || Q == '4' && W == '2') {
+                    for (int i = 0; i < y; i++)
+                        (deystv3[i] == 1 && deystv4[i] == 1) ? deystv5[i] = 1 : deystv5[i] = 0;
                     }
                     else if (Q == W) {
                         switch (Q) {
@@ -3832,7 +4943,7 @@ int main()
                     }
                     break;
                 }
-                }
+            }
             else if (Op == '4') {
                 switch (p) {
                 case 1:
@@ -4209,11 +5320,11 @@ int main()
                     else if (Q == 'D' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (chislo4[i] == 1 && deystv2[i] == 0) ? deystv4[i] = 0 : deystv4[i] = 1;
-                            }
+                    }
                     else if (Q == '2' && W == 'D') {
                         for (int i = 0; i < y; i++)
                             (deystv2[i] == 1 && chislo4[i] == 0) ? deystv4[i] = 0 : deystv4[i] = 1;
-                            }
+                    }
                     else if (Q == '1' && W == '2') {
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv2[i] == 0) ? deystv4[i] = 0 : deystv4[i] = 1;
@@ -4249,11 +5360,11 @@ int main()
                     else if (Q == 'D' && W == '3') {
                         for (int i = 0; i < y; i++)
                             (chislo4[i] == 1 && deystv3[i] == 0) ? deystv4[i] = 0 : deystv4[i] = 1;
-                            }
+                    }
                     else if (Q == '3' && W == 'D') {
                         for (int i = 0; i < y; i++)
                             (deystv3[i] == 1 && chislo4[i] == 0) ? deystv4[i] = 0 : deystv4[i] = 1;
-                            }
+                    }
                     else if (Q == '1' && W == '3') {
                         for (int i = 0; i < y; i++)
                             (deystv1[i] == 1 && deystv3[i] == 0) ? deystv4[i] = 0 : deystv4[i] = 1;
@@ -4383,11 +5494,11 @@ int main()
                     else if (Q == 'D' && W == '2') {
                         for (int i = 0; i < 4; i++)
                             (chislo4[i] == 1 && deystv2[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
-                            }
+                    }
                     else if (Q == '2' && W == 'D') {
-                                for (int i = 0; i < 4; i++)
-                                    (deystv2[i] == 1 && chislo4[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
-                                    }
+                        for (int i = 0; i < 4; i++)
+                            (deystv2[i] == 1 && chislo4[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
                     else if (Q == '1' && W == '2') {
                         for (int i = 0; i < 4; i++)
                             (deystv1[i] == 1 && deystv2[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
@@ -4423,11 +5534,11 @@ int main()
                     else if (Q == 'D' && W == '3') {
                         for (int i = 0; i < 4; i++)
                             (chislo4[i] == 1 && deystv3[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
-                            }
+                    }
                     else if (Q == '3' && W == 'D') {
                         for (int i = 0; i < 4; i++)
                             (deystv3[i] == 1 && chislo4[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
-                            }
+                    }
                     else if (Q == '1' && W == '3') {
                         for (int i = 0; i < 4; i++)
                             (deystv1[i] == 1 && deystv3[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
@@ -4471,11 +5582,11 @@ int main()
                     else if (Q == 'D' && W == '4') {
                         for (int i = 0; i < 4; i++)
                             (chislo4[i] == 1 && deystv4[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
-                            }
+                    }
                     else if (Q == '4' && W == 'D') {
                         for (int i = 0; i < 4; i++)
                             (deystv4[i] == 1 && chislo4[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
-                            }
+                    }
                     else if (Q == '1' && W == '4') {
                         for (int i = 0; i < 4; i++)
                             (deystv1[i] == 1 && deystv4[i] == 0) ? deystv5[i] = 0 : deystv5[i] = 1;
@@ -4862,6 +5973,844 @@ int main()
                             deystv5[i] = 1;
                         break;
                     }
+                }
+            }
+            else if (Op == '6') {
+                switch (p) {
+                case 1:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo2[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo3[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo3[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo4[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo4[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == chislo4[i]) ? deystv1[i] = 0 : deystv1[i] = 1;
+                    }
+                    else if (Q == W) {
+                        for (int i = 0; i < y; i++)
+                            deystv1[i] = 0;
+                    }
+                    break;
+                case 2:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo2[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo3[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo3[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo4[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo4[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == chislo4[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv1[i]) ? deystv2[i] = 0 : deystv2[i] = 1;
+                    }
+                    else if (Q == W) {
+                        for (int i = 0; i < y; i++)
+                            deystv2[i] = 0;
+                    }
+                    break;
+                case 3:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo3[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo3[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo4[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo4[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == chislo4[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv1[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '2' || Q == '2' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == deystv2[i]) ? deystv3[i] = 0 : deystv3[i] = 1;
+                    }
+                    else if (Q == W) {
+                        for (int i = 0; i < y; i++)
+                            deystv3[i] = 0;
+                    }
+                    break;
+                case 4:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo4[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo4[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == chislo4[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv1[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '2' || Q == '2' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == deystv2[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '3' || Q == '3' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == deystv3[i]) ? deystv4[i] = 0 : deystv4[i] = 1;
+                    }
+                    else if (Q == W) {
+                        for (int i = 0; i < y; i++)
+                            deystv4[i] = 0;
+                    }
+                    break;
+                case 5:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == chislo4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == chislo4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == chislo4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv1[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '2' || Q == '2' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == deystv2[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '3' || Q == '3' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == deystv3[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'C' && W == '4' || Q == '4' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == 'D' && W == '4' || Q == '4' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == '3' && W == '4' || Q == '4' && W == '3') {
+                        for (int i = 0; i < y; i++)
+                            (deystv3[i] == deystv4[i]) ? deystv5[i] = 0 : deystv5[i] = 1;
+                    }
+                    else if (Q == W) {
+                        for (int i = 0; i < y; i++)
+                            deystv5[i] = 0;
+                        break;
+                    }
+                }
+            }
+            else if (Op == '7') {
+                switch (p) {
+                case 1:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo4[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo4[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && chislo4[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        case 'D':
+                            for (int i = 0; i < y; i++)
+                                (chislo4[i] == 0 && chislo4[i] == 0) ? deystv1[i] = 1 : deystv1[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo4[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo4[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && chislo4[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                    break;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case 'D':
+                            for (int i = 0; i < y; i++)
+                                (chislo4[i] == 0 && chislo4[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv2[i] = 1 : deystv2[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo4[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo4[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && chislo4[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '2' || Q == '2' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case 'D':
+                            for (int i = 0; i < y; i++)
+                                (chislo4[i] == 0 && chislo4[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv3[i] = 1 : deystv3[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo4[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo4[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && chislo4[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '2' || Q == '2' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '3' || Q == '3' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case 'D':
+                            for (int i = 0; i < y; i++)
+                                (chislo4[i] == 0 && chislo4[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        case '3':
+                            for (int i = 0; i < y; i++)
+                                (deystv3[i] == 0 && deystv3[i] == 0) ? deystv4[i] = 1 : deystv4[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
+                case 5:
+                    if (Q == 'A' && W == 'B' || Q == 'B' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'C' || Q == 'C' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'C' || Q == 'C' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == 'D' || Q == 'D' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && chislo4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == 'D' || Q == 'D' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && chislo4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == 'D' || Q == 'D' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && chislo4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '1' || Q == '1' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '1' || Q == '1' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '1' || Q == '1' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '1' || Q == '1' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '2' || Q == '2' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '2' || Q == '2' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '2' || Q == '2' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '2' || Q == '2' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '2' || Q == '2' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '3' || Q == '3' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '3' || Q == '3' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '3' || Q == '3' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '3' || Q == '3' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '3' || Q == '3' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '3' || Q == '3' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'A' && W == '4' || Q == '4' && W == 'A') {
+                        for (int i = 0; i < y; i++)
+                            (chislo1[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'B' && W == '4' || Q == '4' && W == 'B') {
+                        for (int i = 0; i < y; i++)
+                            (chislo2[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'C' && W == '4' || Q == '4' && W == 'C') {
+                        for (int i = 0; i < y; i++)
+                            (chislo3[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == 'D' && W == '4' || Q == '4' && W == 'D') {
+                        for (int i = 0; i < y; i++)
+                            (chislo4[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '1' && W == '4' || Q == '4' && W == '1') {
+                        for (int i = 0; i < y; i++)
+                            (deystv1[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '2' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv2[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == '3' && W == '4' || Q == '4' && W == '2') {
+                        for (int i = 0; i < y; i++)
+                            (deystv3[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                    }
+                    else if (Q == W) {
+                        switch (Q) {
+                        case 'A':
+                            for (int i = 0; i < y; i++)
+                                (chislo1[i] == 0 && chislo1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case 'B':
+                            for (int i = 0; i < y; i++)
+                                (chislo2[i] == 0 && chislo2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case 'C':
+                            for (int i = 0; i < y; i++)
+                                (chislo3[i] == 0 && chislo3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case 'D':
+                            for (int i = 0; i < y; i++)
+                                (chislo4[i] == 0 && chislo4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '1':
+                            for (int i = 0; i < y; i++)
+                                (deystv1[i] == 0 && deystv1[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '2':
+                            for (int i = 0; i < y; i++)
+                                (deystv2[i] == 0 && deystv2[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '3':
+                            for (int i = 0; i < y; i++)
+                                (deystv3[i] == 0 && deystv3[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        case '4':
+                            for (int i = 0; i < y; i++)
+                                (deystv4[i] == 0 && deystv4[i] == 0) ? deystv5[i] = 1 : deystv5[i] = 0;
+                            break;
+                        }
+                    }
+                    break;
                 }
             }
             if (p == 1) {
