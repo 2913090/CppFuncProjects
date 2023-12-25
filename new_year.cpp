@@ -6,11 +6,12 @@ int main()
 {
     setlocale(LC_ALL, "rus");
     srand(time(NULL));
+    short hp = 3;
     /*  cout << "Злобные гномы заминировали огород санты.\n";
       system("pause > nul");
       cout << "Вам необходимо разминировать поле\n";
       system("pause > nul");
-      cout << "У вас 3 жизни. Удачи!";
+      cout << "У вас " << hp << " жизни. Удачи!";
       system("pause > nul");
 
       system("cls");*/
@@ -56,39 +57,11 @@ int main()
     int prevX, prevY;
     int count = SIZE * SIZE;
     int openPare = 0;
-    while (count > 0) {
-        while (true) {
-            system("cls");
-            cout << "  a b c d" << endl;
-            for (int i = 0; i < SIZE; i++) {
-                cout << i + 1 << " ";
-                for (int j = 0; j < SIZE; j++) {
-                    cout << showField[i][j] << " ";
-                }
-                cout << endl;
-            }
-
-            cout << "введите букву координаты: ";
-            cin >> x;
-            if (x < 'a' || x>'d') {
-                cout << "некорректная координата" << endl;
-                continue;
-            }
-            cout << "введите цифру координаты: ";
-            cin >> y;
-            if (y < '1' || y>'4') {
-                cout << "некорректная координата" << endl;
-                continue;
-            }
-            if (showField[y - 49][x - 97] != '?') continue;
-            break;
-        }
-
-        openPare++;
-        showField[y - 49][x - 97] = field[y - 49][x - 97];
-        count--;
-        if (openPare > 1) {
-            if (showField[y - 49][x - 97] != (showField[prevY][prevX])) {
+    while (hp > 0){
+        while (count > 0) {
+            if (hp == 0) break;
+            while (true) {
+                if (hp == 0) break;
                 system("cls");
                 cout << "  a b c d" << endl;
                 for (int i = 0; i < SIZE; i++) {
@@ -98,17 +71,56 @@ int main()
                     }
                     cout << endl;
                 }
-                Sleep(2000);
-                showField[y - 49][x - 97] = '?';
-                showField[prevY][prevX] = '?';
-                count += 2;
-            }
-            openPare = 0;
-        }
-        else {
-            prevX = x - 97;
-            prevY = y - 49;
-        }
 
+                cout << "введите букву координаты: ";
+                cin >> x;
+                if (x < 'a' || x>'d') {
+                    cout << "некорректная координата" << endl;
+                    continue;
+                }
+                cout << "введите цифру координаты: ";
+                cin >> y;
+                if (y < '1' || y>'4') {
+                    cout << "некорректная координата" << endl;
+                    continue;
+                }
+                if (showField[y - 49][x - 97] != '?') continue;
+                break;
+            }
+            openPare++;
+            showField[y - 49][x - 97] = field[y - 49][x - 97];
+            if (showField[y - 49][x - 97] == '¤') {
+                hp--;
+                cout << "Вы подорвались.\nУ вас осталось " << hp << " жизней.";
+                Sleep(2000);
+                openPare--;
+                continue;
+            }
+            count--;
+            if (openPare > 1) {
+                if (showField[y - 49][x - 97] != (showField[prevY][prevX])) {
+                    system("cls");
+                    cout << "  a b c d" << endl;
+                    for (int i = 0; i < SIZE; i++) {
+                        cout << i + 1 << " ";
+                        for (int j = 0; j < SIZE; j++) {
+                            cout << showField[i][j] << " ";
+                        }
+                        cout << endl;
+                    }
+                    Sleep(2000);
+                    showField[y - 49][x - 97] = '?';
+                    showField[prevY][prevX] = '?';
+                    count += 2;
+                }
+                openPare = 0;
+            }
+            else {
+                prevX = x - 97;
+                prevY = y - 49;
+            }
+
+        }
     }
+    cout << "Нового года не будет.\nВы проиграли.";
 }
