@@ -1,11 +1,18 @@
-﻿#include <iostream>
+#include <iostream>
 #include <windows.h>
 #define random(min, max) (min + rand()%(max-min+1))
 using namespace std;
+void showField(char** field);
+void resetField(char** field, char symbol);
+void playerTurn(char** field, int column, char player, char fill);
+bool checkWin(char** field, char player);
+bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, int num);
+void botTurn(char** field, char bot, char player, char fill);
+
 void showField(char** field) {
 	int size1 = _msize(field) / sizeof(field[0]);
 	int size2 = _msize(field[0]) / sizeof(field[0][0]);
-	//system("cls");
+	system("cls");
 	for (int i = 0; i < size2; i++) {
 		cout << i + 1 << " ";
 	}
@@ -31,8 +38,8 @@ void playerTurn(char** field, int column, char player, char fill) {
 	int size2 = _msize(field[0]) / sizeof(field[0][0]);
 	field[0][column] = player;
 	for (int i = 1; i < size1; i++) {
-		/*showField(field);
-		Sleep(150);*/
+		showField(field);
+		Sleep(150);
 		if (field[i][column] == fill) swap(field[i - 1][column], field[i][column]);
 	}
 }
@@ -40,22 +47,24 @@ bool checkWin(char** field, char player) {
 	int size1 = _msize(field) / sizeof(field[0]);
 	int size2 = _msize(field[0]) / sizeof(field[0][0]);
 	for (int count = 0, i = 0; i < size1; i++) {
+		count = 0;
 		for (int j = 0; j < size2; j++) {
 			if (field[i][j] == player) count++;
 			else count = 0;
 			if (count == 4) {
-				cout << 1;
+				//cout << 1;
 				return 1;
 			}
 		}
 	}
 
 	for (int count = 0, i = 0; i < size2; i++) {
+		count = 0;
 		for (int j = 0; j < size1; j++) {
 			if (field[j][i] == player) count++;
 			else count = 0;
 			if (count == 4) {
-				cout << 2;
+				//cout << 2;
 				return 1;
 			}
 		}
@@ -74,7 +83,7 @@ bool checkWin(char** field, char player) {
 			if (field[ver--][displacement + hor++] == player) count++;
 			else count = 0;
 			if (count == 4) {
-				cout << 3;
+				//cout << 3;
 				return 1;
 			}
 		}
@@ -93,7 +102,7 @@ bool checkWin(char** field, char player) {
 			if (field[ver--][displacement + hor++] == player) count++;
 			else count = 0;
 			if (count == 4) {
-				cout << 4;
+				//cout << 4;
 				return 1;
 			}
 		}
@@ -112,7 +121,7 @@ bool checkWin(char** field, char player) {
 			if (field[ver++][displacement + hor++] == player) count++;
 			else count = 0;
 			if (count == 4) {
-				cout << 5;
+				//cout << 5;
 				return 1;
 			}
 		}
@@ -131,7 +140,7 @@ bool checkWin(char** field, char player) {
 			if (field[ver++][displacement + hor++] == player) count++;
 			else count = 0;
 			if (count == 4) {
-				cout << 6;
+				//cout << 6;
 				return 1;
 			}
 		}
@@ -153,7 +162,7 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 				if (j + 1 < size2) {
 					if (i == size1 - 1) {
 						if (field[i][j + 1] == fill) {
-							if (field[0][j + 1] == fill) {
+							if (field[i][j + 1] == fill) {
 								playerTurn(field, j + 1, symb1, fill);
 								return 1;
 							}
@@ -161,7 +170,7 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 					}
 					else {
 						if (field[i + 1][j + 1] == symb1 || field[i + 1][j + 1] == symb2){
-							if (field[0][j + 1] == fill) {
+							if (field[i][j + 1] == fill) {
 								playerTurn(field, j + 1, symb1, fill);
 								return 1;
 							}
@@ -170,14 +179,14 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 				}
 				if (j - num >= 0) {
 					if (i == size1 - 1) {
-						if (field[0][j - num] == fill) {
+						if (field[i][j - num] == fill) {
 							playerTurn(field, j - num, symb1, fill);
 							return 1;
 						}
 					}
 					else {
 						if (field[i + 1][j - num] == symb1 || field[i + 1][j - num] == symb2) {
-							if (field[0][j - num] == fill) {
+							if (field[i][j - num] == fill) {
 								playerTurn(field, j - num, symb1, fill);
 								return 1;
 							}
@@ -223,19 +232,23 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 			if (field[ver--][displacement + hor++] == checkSymb) count++;
 			else count = 0;
 			if (count == num) {
-				if (displacement + hor + 1 < size2) {
-					if (field[ver + 1][displacement + hor + 1] == fill) {
-						if (field[0][displacement + hor + 1] == fill) {
-							playerTurn(field, displacement + hor + 1, symb1, fill);
-							return 1;
+				if (displacement + hor < size2) {
+					if (field[ver + 1][displacement + hor] != fill) {
+						if (field[ver][displacement + hor] == fill) {
+							if (field[0][displacement + hor] == fill) {
+								playerTurn(field, displacement + hor, symb1, fill);
+								return 1;
+							}
 						}
 					}
 				}
-				if (displacement + hor - num >= 0 && ver - 3 >= 0) {
-					if (field[ver - 3][displacement + hor - num] == fill) {
-						if (field[0][displacement + hor - num] == fill) {
-							playerTurn(field, displacement + hor - num, symb1, fill);
-							return 1;
+				if (displacement + hor - num - 1 >= 0 && ver - num - 1 >= 0) {
+					if (field[ver - num - 1][displacement + hor] != fill) {
+						if (field[ver - num - 1][displacement + hor - num - 1] == fill) {
+							if (field[0][displacement + hor - num - 1] == fill) {
+								playerTurn(field, displacement + hor - num - 1, symb1, fill);
+								return 1;
+							}
 						}
 					}
 				}
@@ -259,17 +272,17 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 			else count = 0;
 			if (count == num) {
 				if (displacement + hor + 1 < size2) {
-					if (field[ver + 1][displacement + hor + 1] == fill) {
-						if (field[0][displacement + hor + 1] == fill) {
-							playerTurn(field, displacement + hor + 1, symb1, fill);
+					if (field[ver][displacement + hor] == fill) {
+						if (field[ver + 1][displacement + hor] != fill) {
+							playerTurn(field, displacement + hor, symb1, fill);
 							return 1;
 						}
 					}
 				}
 				if (displacement + hor - num >= 0) {
-					if (field[ver - num][displacement + hor - num] == fill) {
-						if (field[0][displacement + hor - num] == fill) {
-							playerTurn(field, displacement + hor - num, symb1, fill);
+					if (field[ver + num + 1][displacement + hor - num - 1] == fill) {
+						if (field[ver + num + 2][displacement + hor - num - 1] != fill) {
+							playerTurn(field, displacement + hor - num - 1, symb1, fill);
 							return 1;
 						}
 					}
@@ -294,19 +307,23 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 			if (field[ver++][displacement + hor++] == checkSymb) count++;
 			else count = 0;
 			if (count == num) {
-				if (displacement + hor + 1 < size2) {
-					if (field[ver + 1][displacement + hor + 1] == fill) {
-						if (field[0][displacement + hor + 1] == fill) {
-							playerTurn(field, displacement + hor + 1, symb1, fill);
-							return 1;
+				if (ver < size1) {
+					if (displacement + hor < size2) {
+						if (field[ver][displacement + hor] == fill) {
+							if (field[ver + 1][displacement + hor] != fill) {
+								playerTurn(field, displacement + hor, symb1, fill);
+								return 1;
+							}
 						}
 					}
 				}
-				if (displacement + hor - num >= 0) {
-					if (field[ver - num][displacement + hor - num] == fill) {
-						if (field[0][displacement + hor - num] == fill) {
-							playerTurn(field, displacement + hor - num, symb1, fill);
-							return 1;
+				if (ver - num - 1 >= size1) {
+					if (displacement + hor - num - 1 >= 0) {
+						if (field[ver - num - 1][displacement + hor - num - 1] == fill) {
+							if (field[ver - num][displacement + hor - num - 1] != fill) {
+								playerTurn(field, displacement + hor - num - 1, symb1, fill);
+								return 1;
+							}
 						}
 					}
 				}
@@ -329,18 +346,18 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 			if (field[ver++][displacement + hor++] == checkSymb) count++;
 			else count = 0;
 			if (count == num) {
-				if (displacement + hor + 1 < size2 && ver + 1 < size1) {
-					if (field[ver + 1][displacement + hor + 1] == fill) {
-						if (field[0][displacement + hor + num] == fill) {
-							playerTurn(field, displacement + hor + num, symb1, fill);
+				if (displacement + hor < size2 && ver < size1) {
+					if (field[ver][displacement + hor] == fill) {
+						if (field[ver + 1][displacement + hor] != fill) {
+							playerTurn(field, displacement + hor, symb1, fill);
 							return 1;
 						}
 					}
 				}
-				if (displacement + hor - num >= 0 && ver - num >= 0) {
-					if (field[ver - num][displacement + hor - num] == fill) {
-						if (field[0][displacement + hor - num] == fill) {
-							playerTurn(field, displacement + hor - num, symb1, fill);
+				if (displacement + hor - num - 1 >= 0 && ver - num - 1 >= 0) {
+					if (field[ver - num - 1][displacement + hor - num - 1] == fill) {
+						if (field[ver - num][displacement + hor - num - 1] != fill) {
+							playerTurn(field, displacement + hor - num - 1, symb1, fill);
 							return 1;
 						}
 					}
