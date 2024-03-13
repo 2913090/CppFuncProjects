@@ -386,6 +386,7 @@ int main()
 	char player2 = 2;
 	char fill = 206;
 	int turn = 1;
+	int countTurn = 0;
 	if (horizontal <= 4 || vertical <= 4) {
 		cout << "Ошибка \nПоле слишком мало.";
 	}
@@ -420,6 +421,10 @@ int main()
 					cout << "Победил игрок " << player1;
 					break;
 				}
+				if (countTurn++ == vertical * horizontal) {
+					cout << "Ничья";
+					break;
+				}
 				turn = 0;
 			}
 			else {
@@ -428,6 +433,10 @@ int main()
 					showField(field);
 					if (checkWin(field, player2)) {
 						cout << "Победил бот";
+						break;
+					}
+					if (countTurn++ == vertical * horizontal) {
+						cout << "Ничья";
 						break;
 					}
 				}
@@ -440,6 +449,10 @@ int main()
 					showField(field);
 					if (checkWin(field, player2)) {
 						cout << "Победил игрок " << player2;
+						break;
+					}
+					if (countTurn++ == vertical * horizontal) {
+						cout << "Ничья";
 						break;
 					}
 				}
