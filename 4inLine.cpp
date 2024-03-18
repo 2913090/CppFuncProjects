@@ -235,20 +235,16 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 				if (displacement + hor < size2) {
 					if (field[ver + 1][displacement + hor] != fill) {
 						if (field[ver][displacement + hor] == fill) {
-							if (field[0][displacement + hor] == fill) {
-								playerTurn(field, displacement + hor, symb1, fill);
-								return 1;
-							}
+							playerTurn(field, displacement + hor, symb1, fill);
+							return 1;
 						}
 					}
 				}
 				if (displacement + hor - num - 1 >= 0 && ver - num - 1 >= 0) {
 					if (field[ver - num - 1][displacement + hor] != fill) {
 						if (field[ver - num - 1][displacement + hor - num - 1] == fill) {
-							if (field[0][displacement + hor - num - 1] == fill) {
-								playerTurn(field, displacement + hor - num - 1, symb1, fill);
-								return 1;
-							}
+							playerTurn(field, displacement + hor - num - 1, symb1, fill);
+							return 1;
 						}
 					}
 				}
@@ -348,9 +344,11 @@ bool checkBot(char** field, char checkSymb, char symb1, char symb2, char fill, i
 			if (count == num) {
 				if (displacement + hor < size2 && ver < size1) {
 					if (field[ver][displacement + hor] == fill) {
-						if (field[ver + 1][displacement + hor] != fill) {
-							playerTurn(field, displacement + hor, symb1, fill);
-							return 1;
+						if (ver + 1 < size2) {
+							if (field[ver + 1][displacement + hor] != fill) {
+								playerTurn(field, displacement + hor, symb1, fill);
+								return 1;
+							}
 						}
 					}
 				}
